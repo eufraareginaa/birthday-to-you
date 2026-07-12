@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untukmu</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0a0a0a;
+    color: #e0e0e0;
+    overflow: hidden; text-align: center;
+  }
+.stars {
+    position: fixed; width: 100%; height: 100%;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.4;
+  }
+
+.container {
+    position: relative; z-index: 2;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 20px;
+  }
+  h1 {
+    font-size: 2.8em; font-weight: 500; letter-spacing: 2px;
+    color: #fff;
+  }
+.card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px; border-radius: 16px;
+    backdrop-filter: blur(12px);
+    max-width: 580px; margin: 30px 0;
+  }
+.cake {
+    font-size: 5em; cursor: pointer;
+    transition: 0.4s ease;
+    opacity: 0.9;
+  }
+.cake:hover { transform: scale(1.08); opacity: 1; }
+.btn {
+    background: transparent;
+    color: #e0e0e0; border: 1px solid rgba(255,255,255,0.3);
+    padding: 12px 35px; font-size: 1em;
+    font-weight: 500; border-radius: 30px;
+    cursor: pointer; margin-top: 20px;
+    transition: 0.3s;
+  }
+.btn:hover { background: rgba(255,255,255,0.1); }
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<audio id="bgm" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>Selamat Ulang Tahun</h1>
+  <div class="cake" onclick="celebrate()">🎂</div>
+
+  <div class="card">
+    <h2 style="font-weight:500; margin-bottom:15px;">Untuk [Nama Dia]</h2>
+    <p id="ucapan" style="line-height: 1.9; font-size: 1.05em; color:#ccc;">
+      Hari ini tanggal yang sama dengan hari kamu pertama kali hadir di dunia.<br><br>
+      Aku bersyukur, karena di tahun ini aku dipertemukan dan kenal dengan kamu.<br>
+      Terima kasih sudah jadi seseorang yang bikin hari-hari jadi lebih hangat.<br><br>
+      Semoga di umur baru ini, semua hal baik selalu nemuin kamu.<br>
+      Sehat selalu ya.<br><br>
+      <b>- dari seseorang yang diam-diam mengapresiasi kamu</b>
+    </p>
+    <button class="btn" onclick="celebrate()">Buka Pesan</button>
+  </div>
+</div>
+
+<script>
+const listUcapan = [
+  `Hari ini tanggal yang sama dengan hari kamu pertama kali hadir di dunia.<br><br>
+   Aku bersyukur, karena di tahun ini aku dipertemukan dan kenal dengan kamu.<br>
+   Terima kasih sudah jadi seseorang yang bikin hari-hari jadi lebih hangat.<br><br>
+   Semoga di umur baru ini, semua hal baik selalu nemuin kamu.<br>
+   Sehat selalu ya.<br><br>
+   <b>- dari seseorang yang diam-diam mengapresiasi kamu</b>`,
+
+  `Selamat bertambah usia.<br><br>
+   Nggak banyak kata, cuma mau bilang kalau kehadiran kamu<br>
+   cukup bikin suasana jadi lebih tenang dan nyaman.<br><br>
+   Semoga semua yang kamu mau, pelan-pelan jadi nyata.<br>
+   Sukses terus ya.<br><br>
+   <b>- dari aku</b>`,
+
+  `Hari ini hari kamu.<br><br>
+   Makasih udah lahir dan tumbuh jadi pribadi yang baik.<br>
+   Senang bisa kenal kamu di waktu yang tepat.<br><br>
+   Semoga tahun ini bawa banyak hal baru yang indah buat kamu.<br><br>
+   <b>- titip doa terbaik</b>`
+];
+
+let index = 0;
+function gantiUcapan() {
+  index = (index + 1) % listUcapan.length;
+  document.getElementById('ucapan').innerHTML = listUcapan[index];
+}
+
+function celebrate() {
+  document.getElementById('bgm').volume = 0.3;
+  document.getElementById('bgm').play();
+  alert("Selamat ulang tahun 🎉\nSemoga hari kamu menyenangkan.");
+}
+</script>
+</body>
+</html>
